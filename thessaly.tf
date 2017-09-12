@@ -8,7 +8,8 @@ resource "digitalocean_droplet" "app" {
   image  = "ubuntu-17-04-x64"
   name   = "app.thessaly.ca"
   region = "sfo2"
-  size   = "512mb"
+  size   = "1Gb"
+  resize_disk = false
 }
 
 resource "digitalocean_floating_ip" "app" {
