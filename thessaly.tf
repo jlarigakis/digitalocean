@@ -16,3 +16,8 @@ resource "digitalocean_floating_ip" "app" {
   droplet_id = "${digitalocean_droplet.app.id}"
   region = "sfo2"
 }
+
+resource "digitalocean_domain" "app" {
+  name = "app.thessaly.ca"
+  ip_address   = "${digitalocean_floating_ip.app.ip_address}"
+}
