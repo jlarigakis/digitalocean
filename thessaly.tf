@@ -1,4 +1,3 @@
-variable "do_token" {}
 variable "domain_name" {}
 variable "ssh_key_path" {
   default = "~/.ssh/id_rsa.pub"
@@ -8,9 +7,7 @@ variable "image" {
   default = "ubuntu-17-04-x64"
 }
 
-provider "digitalocean" {
-  token = "${var.do_token}"
-}
+provider "digitalocean" {}
 
 terraform {
   backend "gcs" {
