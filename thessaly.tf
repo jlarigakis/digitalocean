@@ -20,7 +20,7 @@ resource "digitalocean_droplet" "app" {
   image  = "${var.image}"
   name   = "${var.domain_name}"
   region = "sfo2"
-  size   = "4Gb"
+  size   = "1Gb"
   resize_disk = false
   ssh_keys = ["${digitalocean_ssh_key.default.id}"]
 }
