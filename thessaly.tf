@@ -12,6 +12,13 @@ provider "digitalocean" {
   token = "${var.do_token}"
 }
 
+terraform {
+  backend "gcs" {
+    bucket  = "thessaly"
+    path    = "terraform/terraform.tfstate"
+  }
+}
+
 resource "digitalocean_floating_ip" "app" {
   region = "sfo2"
 }
