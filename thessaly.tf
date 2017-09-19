@@ -19,7 +19,17 @@ terraform {
   }
 }
 
+resource "digitalocean_droplet" "app" {
+  image  = "${var.image}"
+  name   = "${var.domain_name}"
+  region = "sfo2"
+  size   = "1Gb"
+  resize_disk = false
+  ssh_keys = ["${digitalocean_ssh_key.default.id}"]
+}
+
 resource "digitalocean_floating_ip" "app" {
+  droplet_id = "${digitalocean_droplet.app.id}"
   region = "sfo2"
 }
 
