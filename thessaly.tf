@@ -1,12 +1,19 @@
 variable "do_token" {}
 variable "domain_name" {}
+variable "ssh_key_path" {
+  default = "~/.ssh/id_rsa.pub"
+}
+
+variable "image" {
+  default = "ubuntu-17-04-x64"
+}
 
 provider "digitalocean" {
   token = "${var.do_token}"
 }
 
 resource "digitalocean_droplet" "app" {
-  image  = "ubuntu-16-04-x64"
+  image  = "${var.image}"
   name   = "app.thessaly.ca"
   region = "sfo2"
   size   = "1Gb"
@@ -26,5 +33,5 @@ resource "digitalocean_domain" "app" {
 
 resource "digitalocean_ssh_key" "default" {
   name = "Jason Personal Macbook"
-  public_key = "${file("/Users/jason/.ssh/id_ecdsa.pub")}"
+  public_key = "${file("${var.ssh_key_path}")}"
 }
