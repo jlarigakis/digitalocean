@@ -1,3 +1,2 @@
-domain_name  = "apps.thessaly.ca"
+domain_name  = "app.thessaly.ca"
 ssh_key_path = "~/.ssh/id_ecdsa.pub"
-image = "dokku-16-04"
